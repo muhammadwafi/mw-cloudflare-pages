@@ -1,0 +1,38 @@
+/*
+ * mw-app » App.scss
+ * ==============================================
+ * @Author    : Muhammad Wafi <mwafi@mwprolabs.com>
+ * @Support   : [www.mwprolabs.com]
+ * @Created   : 28-11-2021
+ * @Modified  : 28-11-2021 14:43:35 pm
+ * ----------------------------------------------
+ * @Copyright (c) 2021 MWprolabs www.mwprolabs.com
+ * 
+ */
+
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+ // ==========================================================================
+ // BASE style import
+ // ==========================================================================
+ @import "~rfs/scss";
+ @import "./base/theme";
+ @import "./base/mixins";
+ @import "./base/basic";
+ // ==========================================================================
+ // MODULE style import
+ // ==========================================================================
+@import "./modules/alert";
+@import "./modules/avatar";
+@import "./modules/badge";
+@import "./modules/button";
+@import "./modules/card";
+@import "./modules/dropdown";
+@import "./modules/form";
+@import "./modules/header";
+@import "./modules/modal";
+@import "./modules/nav";
+@import "./modules/loading";
+@import "./modules/pagination";
+@import "./modules/utilities";
+@import "./modules/votes";

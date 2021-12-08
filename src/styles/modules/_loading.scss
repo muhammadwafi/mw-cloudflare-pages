@@ -1,0 +1,76 @@
+.mw-loading {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.mw-loader {
+    width: 70px;
+    cursor: pointer;
+    &__ring {
+        transform-origin: 50px 50px;
+        animation: starting-fill 0.5s forwards,
+                   vary-loader-width 3s 0.5s linear infinite alternate,
+                   spin 1s 0.25s linear infinite;
+        &-overlay {
+            visibility: hidden;
+            transform-origin: 50px 50px;
+            animation: spin 1.6s 0.2s linear infinite;
+        }
+    }
+}
+
+.mw-loading__complete {
+    .mw-loader {
+        animation: fade 0.2s 0.7s linear forwards;
+        transition: all 0s 0.9s;
+        cursor: initial;
+        pointer-events: none;
+        &__ring {
+            animation: starting-fill 0.5s forwards,
+                       vary-loader-width 3s 0.5s linear infinite alternate,
+                       spin 1.6s 0.2s linear infinite, fade 0.1 0.5s linear forwards;
+            &-overlay {
+                visibility: visible;
+                animation:
+                    complete-fill 0.5s linear forwards,
+                    spin 1.6s 0.2s linear infinite;
+            }
+        }
+    }
+}
+
+@keyframes starting-fill {
+    to {
+        stroke-dashoffset: 270;
+    }
+}
+
+@keyframes vary-loader-width {
+    0% {
+        stroke-dashoffset: 270;
+    }
+
+    50% {
+        stroke-dashoffset: 170;
+    }
+
+    100% {
+        stroke-dashoffset: 275;
+    }
+}
+
+@keyframes complete-fill {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

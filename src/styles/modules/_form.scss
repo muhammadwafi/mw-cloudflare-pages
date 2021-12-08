@@ -1,0 +1,276 @@
+// form.scss
+$border-radius: 6;
+
+/*----------  Autofill - Remove default autofill style  ----------*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: 1px solid $border-color;
+    -webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/*---------- Form Group ----------*/
+.form-group {
+    margin-bottom: 1rem;
+    label {
+        display: block;
+        line-height: 1.25;
+        font-size: inherit;
+        font-weight: $font-weight-medium;
+        color: $dark;
+        margin-bottom: .25rem;
+    }
+    &:hover {
+        label {
+            color: $dark--hover!important;
+        }
+    }
+    &.has-error {
+        .form-control {
+            border-color: $danger !important;
+        }
+        .help-block {
+            color: $danger;
+        }
+    }
+    ul.errorlist {
+        padding-left: .9rem;
+    }
+
+}
+
+/*----------  Form Control  ----------*/
+.form-control {
+    @include roundedCorners($border-radius);
+    border-color: $border-color;
+    color: $black;
+    font-size: $font-size-nm;
+    padding: 0.5rem 1rem;
+    height: auto;
+    outline: none;
+    box-shadow: none;
+    border-width: 0.075rem;
+    &-sm {
+        padding: .35rem .85rem;
+        font-size: .765rem;
+    }
+    &-md{
+        line-height: 1.75;
+    }
+    &-lg {
+        padding: .55rem 1rem;
+        font-size: 1rem;
+        min-height: 45px !important;
+    }
+    &:focus,
+    &:active {
+        border-color: $primary;
+        box-shadow: $form-shadow;
+        outline: none;
+    }
+    &:disabled, 
+    &[readonly] {
+        background-color: $light;
+    }
+}
+
+.form-group:hover .form-control,
+.form-control:hover {
+    border-color: $border-color--hover;
+    outline: none;
+}
+
+/*----------  Form Validation  ----------*/
+.form-control.is-invalid, 
+.was-validated .form-control:invalid {
+    border-color: $danger;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2Zm-.75 6c0-.41.34-.75.75-.75s.75.34.75.75v5c0 .41-.34.75-.75.75s-.75-.34-.75-.75V8Zm1.67 8.38c-.05.13-.12.23-.21.33-.1.09-.21.16-.33.21-.12.05-.25.08-.38.08s-.26-.03-.38-.08-.23-.12-.33-.21c-.09-.1-.16-.2-.21-.33A.995.995 0 0 1 11 16c0-.13.03-.26.08-.38s.12-.23.21-.33c.1-.09.21-.16.33-.21a1 1 0 0 1 .76 0c.12.05.23.12.33.21.09.1.16.21.21.33.05.12.08.25.08.38s-.03.26-.08.38Z' fill='%23f71735'%3E%3C/path%3E%3C/svg%3E");
+}
+.form-control.is-invalid:focus,
+.form-control.is-invalid:active {
+    border-color: $danger!important;
+    box-shadow: $form-shadow-error;
+}
+.form-check-input.is-invalid~.form-check-label, 
+.was-validated .form-check-input:invalid~.form-check-label,
+.invalid-feedback {
+    color: $danger;
+}
+.form-control.is-valid, 
+.was-validated .form-control:valid {
+    border-color: $success;
+}
+.form-check-input.is-valid~.form-check-label, 
+.was-validated .form-check-input:valid~.form-check-label,
+.valid-feedback {
+    color: $success;
+}
+
+/*----------  Form Control Plaintext ----------*/
+.form-control-plaintext {
+    @include roundedCorners($border-radius);
+    font-size: inherit;
+    padding: .5rem 0;
+    border-width: 1px;
+    &:hover {
+        border-color: $border-color;
+    }
+    &:active,
+    &:focus {
+        border-color: $border-color--hover;
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+/*----------  Input Group  ----------*/
+.input-group {
+    .input-group-text {
+        @include roundedCorners($border-radius);
+        font-size: 1.15rem;
+        border-color: $border-color;
+        background: $light-20;
+        z-index: 10;
+    }
+}
+// Input Group Custom
+.input-group.custom {
+    // Form Control & Input Group
+    >.custom-select:not(:first-child),
+    >.form-control:not(:first-child) {
+        @include roundedLeft($border-radius);
+        padding-left: 40px
+    }
+    >.custom-select:not(:last-child),
+    >.form-control:not(:last-child) {
+        @include roundedRight($border-radius);
+        padding-right: 40px
+    }
+    // form control small
+    >.form-control-sm:not(:first-child) {
+        @include roundedLeft($border-radius);
+        padding-left: 34px
+    }
+    >.form-control:not(:last-child) {
+        @include roundedRight($border-radius);
+        padding-right: 34px
+    }
+    
+    // Input Group Addon
+    .input-group-addon {
+        position: absolute;
+        height: 100%;
+        z-index: 10;
+        left: 0;        
+        .input-group-text {
+            border-radius: 0;
+            font-size: 1.25rem;
+            background: transparent;
+            border: none!important;
+            position: relative;
+            color: $light-30;
+            padding: 0 .25rem 0 .65rem;
+            height: 100%;
+        }
+        // addon placement on right
+        &.placement-right {
+            right: 0;
+            left: auto;
+            .input-group-text {
+                padding: 0 .65rem 0 .25rem;
+            }
+            +.form-control {
+                padding-right: 40px!important;
+                padding-left: 1rem!important;
+            }
+            +.form-control-sm {
+                padding-right: 35px!important;
+                padding-left: .85rem!important;
+            }
+        }
+        // focus state
+        &.focused {
+            .input-group-text {
+                color: $primary;
+                svg {
+                    fill: $primary-lt;
+                }
+            }
+        }
+
+    }
+}
+
+// Basic Range Input
+input[type=range] {
+	-webkit-appearance: none;
+	margin: 20px 0;
+	width: 100%;
+}
+input[type=range]:focus {
+	outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 4px;
+	cursor: pointer;
+	background: $info;
+	border-radius: 25px;
+}
+input[type=range]::-webkit-slider-thumb {
+	height: 18px;
+	width: 18px;
+	border-radius: 50%;
+	background: $white;
+    box-shadow: 0 0 4px 0 $shadow-color;
+    border: 2px solid $info;
+	cursor: pointer;
+	-webkit-appearance: none;
+	margin-top: -8px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: $info;
+}
+
+// checkbox
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    transition: background 0.2s ease, box-shadow 0.2s ease, border 0.1s ease-in;
+    margin: 0 .5rem 0 0;
+    &:active {
+        box-shadow: 0 0 0 3px rgba($primary, 0.1), $form-shadow;
+        background-color: $white;
+    }
+    &+label {
+        position: relative;
+        cursor: pointer;
+        margin-bottom: 0;
+        margin-top: .115rem;
+        user-select: none;
+    }
+    &[type=checkbox] {
+        @include roundedCorners(5);
+        &:hover,
+        &:active,
+        &:focus {
+            border-color: $primary;
+            box-shadow: 0 0 0 3px rgba($primary, 0.1), $form-shadow;
+        }
+        &:checked {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+            background-color: $primary;
+            border-color: $primary;
+            background-size: 14px;
+            box-shadow: none;
+        }
+    }
+}

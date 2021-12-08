@@ -1,0 +1,53 @@
+// header.scss
+
+$header-height: 60px;
+
+/*----------  Header  ----------*/
+.mw-header {
+    min-height: $header-height;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+    z-index: 1000;
+    background: $white;
+    border-bottom: 1px solid $border-color;
+    transition: box-shadow .15s ease-in-out;
+    .navbar-brand {
+        font-weight: $font-weight-semibold;
+    }
+    &.scrolled {
+        background: rgba($white, .45);
+        backdrop-filter: blur(16px) saturate(120%);
+    }
+    >.navbar {
+        min-height: inherit;
+        padding-top: .65rem;
+        padding-bottom: .65rem;
+    }
+    .nav li {
+        &:not(:last-child) {
+            margin-right: .45rem;
+        }
+    }
+}
+@media(max-width: 991.98px) {
+    .mw-header {
+        >.navbar {
+            padding: .65rem 0;
+        }
+    }
+    .mw-navbar {
+        margin-top: 1rem;
+    }
+}
+
+.mw-footer {
+    height: $header-height;
+    width: 100%;
+    display: flex;
+    margin-top: 1rem;
+    align-items: center;
+    font-size: $font-size-sm;
+    padding: 0 1rem;
+    color: $text-muted;
+}
